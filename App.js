@@ -9,9 +9,16 @@ export default class App extends React.Component{
         return(
             <Router>
                 <Stack key="root">
-                    <Scene key="inicio" component={Inicio} initial hideNavBar/>
-                    <Scene key="cadastro" component={Cadastro} />
+                    <Scene key="inicio" 
+                    component={Inicio} 
+                    initial 
+                    hideNavBar
+                    navigationBarTitleImage={require("./assets/logo.png")} 
+                    navigationBarTitleImageStyle={{marginLeft: 50 ,resizeMode: "contain", width: "80%", height: "90%"}}
+                    />
+
                     <Scene key="validacao" component={Validacao} />
+                    <Scene key="cadastro" component={Cadastro} />
                 </Stack>
             </Router>
         )

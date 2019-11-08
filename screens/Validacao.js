@@ -1,15 +1,19 @@
 import React from "react"
-import { View, Button, Text } from "react-native"
+import { View, StyleSheet, Image, Alert, Dimensions } from "react-native"
+import Styles from "./Styles"
+import { Button, Overlay, Input } from "react-native-elements"
+import { Actions } from "react-native-router-flux"
+
+
 
 export default class extends React.Component{
-
     render(){
         return(
-            <View style={{backgroundColor: "red"}}>
-                <Text>
-                    Teste navegação2
-                </Text>
-            </View>
+            <Input 
+            inputContainerStyle={Styles.input}
+            labelStyle={{color: "green"}}
+            label="Digite seu email"
+            placeholder="email@exemplo.com"/>
         )
     }
 }

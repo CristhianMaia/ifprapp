@@ -1,5 +1,8 @@
 import React from "react"
-import { View, Button, Text } from "react-native"
+import { View, StyleSheet, Image, Alert, Dimensions } from "react-native"
+import Styles from "./Styles"
+import { Button, Overlay, Input } from "react-native-elements"
+import { Actions } from "react-native-router-flux"
 
 export default class extends React.Component{
 
@@ -7,7 +10,7 @@ export default class extends React.Component{
         return(
             <View style={{backgroundColor: "red"}}>
                 <Text>
-                    Teste navegação2
+                    Cadastro
                 </Text>
             </View>
         )

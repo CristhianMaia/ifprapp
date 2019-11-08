@@ -1,27 +1,65 @@
 import React from "react"
-import { View, StyleSheet, Image } from "react-native"
-import { Button } from "react-native-elements"
+import { View, Image, Alert } from "react-native"
+import Styles from "./Styles"
+import { Button, Overlay, Input, Icon } from "react-native-elements"
 import { Actions } from "react-native-router-flux"
 
+
 export default class extends React.Component{
+    state = {
+        overlay: false
+    }
 
     render(){
         return(
             <View style={{flex: 1, alignItems: "center"}}>
+                <Overlay
+                isVisible={this.state.overlay}
+                overlayStyle={Styles.overlay}
+                onBackdropPress={() => this.setState({overlay: false})}>
+                    <Input 
+                    inputContainerStyle={Styles.input}
+                    labelStyle={{color: "green"}}
+                    label="Digite seu email"
+                    placeholder="email@exemplo.com"/>
+
+                    <Button 
+                    title="Confirmar"
+                    type="outline"
+                    titleStyle={{color: "green"}}
+                    buttonStyle={{borderColor: "green"}}
+                    raised
+                    containerStyle={Styles.botao}
+                    onPress={() => {
+                        Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
+                        this.setState({overlay: false})
+                    }}
+                    />
+                
+                </Overlay>
 
                 <Image 
                 source={require("../assets/logo.png")}
-                style={styles.img} 
+                style={Styles.img} 
                 resizeMode="contain"/>
+
+                <View style={{paddingVertical: 50}} />
 
                 <Button 
                 title="Cadastro"
                 type="outline"
                 titleStyle={{color: "green"}}
                 buttonStyle={{borderColor: "green"}}
-                raised={true}
-                containerStyle={styles.botao}
-                onPress={() => Actions.cadastro()}
+                raised
+                containerStyle={Styles.botao}
+                onPress={() => Actions.validacao()}
+                icon={
+                    <Icon 
+                    name="user"
+                    type="antdesign"
+                    color="green"
+                    iconStyle={Styles.icon}/>
+                }
                 />
 
                 <Button 
@@ -29,9 +67,16 @@ export default class extends React.Component{
                 type="outline"
                 titleStyle={{color: "green"}}
                 buttonStyle={{borderColor: "green"}}
-                raised={true}
-                containerStyle={styles.botao}
-                onPress={() => null}
+                raised
+                containerStyle={Styles.botao}
+                onPress={() => this.setState({overlay: true})}
+                icon={
+                    <Icon 
+                    name="lock"
+                    type="antdesign"
+                    color="green"
+                    iconStyle={Styles.icon}/>
+                }
                 />
 
                 <Button 
@@ -39,26 +84,19 @@ export default class extends React.Component{
                 type="outline"
                 titleStyle={{color: "green"}}
                 buttonStyle={{borderColor: "green"}}
-                raised={true}
-                containerStyle={styles.botao}
+                raised
+                containerStyle={Styles.botao}
                 onPress={() => null}
+                icon={
+                    <Icon 
+                    name="tool"
+                    type="antdesign"
+                    color="green"
+                    iconStyle={Styles.icon}/>
+                }
                 />
 
             </View>
         )
     }
 }
-
-
-
-const styles = StyleSheet.create({
-    botao: {
-        width: "50%",
-        backgroundColor: "green",
-        marginTop: 10
-    },
-    img: {
-        width: "100%",
-        height: "15%"
-    }
-})
