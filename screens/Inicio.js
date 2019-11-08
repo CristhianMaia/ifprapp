@@ -38,11 +38,6 @@ export default class extends React.Component{
                 
                 </Overlay>
 
-                <Image 
-                source={require("../assets/logo.png")}
-                style={Styles.img} 
-                resizeMode="contain"/>
-
                 <View style={{paddingVertical: 50}} />
 
                 <Button 
