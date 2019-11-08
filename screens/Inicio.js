@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Image, Alert } from "react-native"
+import { View, Alert } from "react-native"
 import Styles from "./Styles"
 import { Button, Overlay, Input, Icon } from "react-native-elements"
 import { Actions } from "react-native-router-flux"
@@ -12,7 +12,7 @@ export default class extends React.Component{
 
     render(){
         return(
-            <View style={{flex: 1, alignItems: "center"}}>
+            <View style={{flex: 1, alignItems: "center", backgroundColor: "#f7f7f7"}}>
                 <Overlay
                 isVisible={this.state.overlay}
                 overlayStyle={Styles.overlay}
@@ -34,6 +34,13 @@ export default class extends React.Component{
                         Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
                         this.setState({overlay: false})
                     }}
+                    icon={
+                        <Icon 
+                        name="check"
+                        type="antdesign"
+                        color="green"
+                        iconStyle={Styles.icon}/>
+                    }
                     />
                 
                 </Overlay>
