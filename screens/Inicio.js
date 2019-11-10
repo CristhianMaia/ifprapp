@@ -1,8 +1,9 @@
 import React from "react"
 import { View, Alert } from "react-native"
-import Styles from "./Styles"
-import { Button, Overlay, Input, Icon } from "react-native-elements"
+import { Overlay, Input } from "react-native-elements"
 import { Actions } from "react-native-router-flux"
+import Styles from "../components/Styles"
+import Button from "../components/Button"
 
 
 export default class extends React.Component{
@@ -13,10 +14,12 @@ export default class extends React.Component{
     render(){
         return(
             <View style={{flex: 1, alignItems: "center", backgroundColor: "#f7f7f7"}}>
+
                 <Overlay
                 isVisible={this.state.overlay}
                 overlayStyle={Styles.overlay}
                 onBackdropPress={() => this.setState({overlay: false})}>
+
                     <Input 
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
@@ -25,22 +28,13 @@ export default class extends React.Component{
 
                     <Button 
                     title="Confirmar"
-                    type="outline"
-                    titleStyle={{color: "green"}}
-                    buttonStyle={{borderColor: "green"}}
-                    raised
-                    containerStyle={Styles.botao}
                     onPress={() => {
                         Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
                         this.setState({overlay: false})
                     }}
-                    icon={
-                        <Icon 
-                        name="check"
-                        type="antdesign"
-                        color="green"
-                        iconStyle={Styles.icon}/>
-                    }
+                    name="check"
+                    type="antdesign"
+
                     />
                 
                 </Overlay>
@@ -49,53 +43,23 @@ export default class extends React.Component{
 
                 <Button 
                 title="Cadastro"
-                type="outline"
-                titleStyle={{color: "green"}}
-                buttonStyle={{borderColor: "green"}}
-                raised
-                containerStyle={Styles.botao}
                 onPress={() => Actions.validacao()}
-                icon={
-                    <Icon 
-                    name="user"
-                    type="antdesign"
-                    color="green"
-                    iconStyle={Styles.icon}/>
-                }
+                name="user"
+                type="antdesign"
                 />
 
                 <Button 
                 title="Esqueci a senha"
-                type="outline"
-                titleStyle={{color: "green"}}
-                buttonStyle={{borderColor: "green"}}
-                raised
-                containerStyle={Styles.botao}
                 onPress={() => this.setState({overlay: true})}
-                icon={
-                    <Icon 
-                    name="lock"
-                    type="antdesign"
-                    color="green"
-                    iconStyle={Styles.icon}/>
-                }
+                name="lock"
+                type="antdesign"
                 />
 
                 <Button 
                 title="Suporte"
-                type="outline"
-                titleStyle={{color: "green"}}
-                buttonStyle={{borderColor: "green"}}
-                raised
-                containerStyle={Styles.botao}
                 onPress={() => null}
-                icon={
-                    <Icon 
-                    name="tool"
-                    type="antdesign"
-                    color="green"
-                    iconStyle={Styles.icon}/>
-                }
+                name="tool"
+                type="antdesign"
                 />
 
             </View>

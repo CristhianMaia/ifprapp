@@ -1,8 +1,7 @@
 import React from "react"
-import { View, StyleSheet, Image, Alert, Dimensions } from "react-native"
-import Styles from "./Styles"
-import { Button, Overlay, Input } from "react-native-elements"
-import { Actions } from "react-native-router-flux"
+import { View } from "react-native"
+import { Input } from "react-native-elements"
+import Styles from "../components/Styles"
 
 
 
