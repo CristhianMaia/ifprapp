@@ -24,7 +24,8 @@ export default Styles = StyleSheet.create({
         marginBottom: res.height *0.03
     },
     icon: {
-        paddingRight: res.width * 0.05
+        paddingRight: res.width * 0.05,
+        paddingTop: res.height *0.005
     },
     container: {
         flex: 1, 

@@ -14,12 +14,12 @@ export default class extends React.Component{
     email = ""
 
 
-    checkEmail = (email) => {
-        if (email == ""){
+    checkEmail = () => {
+        if (this.email == ""){
             Alert.alert("Erro", "Preencha todos os campos disponíveis.")
         }
         else{
-            Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
+            Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.\nApós clicar no link realize o cadastro novamente pelo app.")
             this.setState({overlay: false})
         }
     }
@@ -39,11 +39,13 @@ export default class extends React.Component{
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
                     onChangeText={(txt) => this.email = txt}
-                    placeholder="email@exemplo.com"/>
+                    maxLength={30}
+                    placeholder="email@exemplo.com"
+                    />
 
                     <Button 
                     title="Confirmar"
-                    onPress={() => this.checkEmail(this.email)}
+                    onPress={() => this.checkEmail()}
                     name="check"
                     type="antdesign"
 
@@ -69,7 +71,7 @@ export default class extends React.Component{
 
                 <Button 
                 title="Suporte"
-                onPress={() => null}
+                onPress={() => Actions.suporte()}
                 name="tool"
                 type="antdesign"
                 />
