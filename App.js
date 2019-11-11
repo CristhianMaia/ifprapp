@@ -4,6 +4,7 @@ import Inicio from "./screens/Inicio"
 import Cadastro from "./screens/Cadastro"
 import Validacao from "./screens/Validacao"
 
+
 export default class App extends React.Component{
     render(){
         return(

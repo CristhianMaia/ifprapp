@@ -11,9 +11,23 @@ export default class extends React.Component{
         overlay: false
     }
 
+    email = ""
+
+
+    checkEmail = (email) => {
+        if (email == ""){
+            Alert.alert("Erro", "Preencha todos os campos disponíveis.")
+        }
+        else{
+            Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
+            this.setState({overlay: false})
+        }
+    }
+
+
     render(){
         return(
-            <View style={{flex: 1, alignItems: "center", backgroundColor: "#f7f7f7"}}>
+            <View style={Styles.container}>
 
                 <Overlay
                 isVisible={this.state.overlay}
@@ -21,17 +35,15 @@ export default class extends React.Component{
                 onBackdropPress={() => this.setState({overlay: false})}>
 
                     <Input 
+                    label="Digite seu email"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
-                    label="Digite seu email"
+                    onChangeText={(txt) => this.email = txt}
                     placeholder="email@exemplo.com"/>
 
                     <Button 
                     title="Confirmar"
-                    onPress={() => {
-                        Alert.alert("Sucesso", "Um link de verificação foi enviado ao seu email.")
-                        this.setState({overlay: false})
-                    }}
+                    onPress={() => this.checkEmail(this.email)}
                     name="check"
                     type="antdesign"
 

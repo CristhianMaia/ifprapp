@@ -16,12 +16,20 @@ export default Styles = StyleSheet.create({
     overlay: {
         alignItems: "center",
         justifyContent: "center",
-        height: res.height * 0.3
+        height: res.height * 0.3,
+        elevation: 8
     },
     input: {
-        borderColor: 'green'
+        borderColor: 'green',
+        marginBottom: res.height *0.03
     },
     icon: {
         paddingRight: res.width * 0.05
+    },
+    container: {
+        flex: 1, 
+        backgroundColor: "#f7f7f7", 
+        alignItems: "center",
+        paddingTop: res.height*0.06
     }
 })
