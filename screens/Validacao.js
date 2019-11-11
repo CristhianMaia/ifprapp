@@ -6,7 +6,7 @@ import Styles from "../components/Styles"
 import Button from "../components/Button"
 
 
-export default class extends React.Component{
+export default class Validacao extends React.Component{
 
     resp = ""
     cpf = ""
@@ -29,49 +29,49 @@ export default class extends React.Component{
             <View style={Styles.container}>
 
                 <Input 
-                label="Nome do Responsável"
-                inputContainerStyle={Styles.input}
-                labelStyle={{color: "green"}}
-                maxLength={60}
-                onChangeText={(txt) => this.resp = txt}
+                    label="Nome do Responsável"
+                    inputContainerStyle={Styles.input}
+                    labelStyle={{color: "green"}}
+                    maxLength={60}
+                    onChangeText={(txt) => this.resp = txt}
                 />
 
                 <Input 
-                label="CPF"
-                inputContainerStyle={Styles.input}
-                labelStyle={{color: "green"}}
-                maxLength={11}
-                onChangeText={(txt) => this.cpf = txt}
+                    label="CPF"
+                    inputContainerStyle={Styles.input}
+                    labelStyle={{color: "green"}}
+                    maxLength={11}
+                    onChangeText={(txt) => this.cpf = txt}
                 />
 
                 <Input 
-                label="RA (Registro Acadêmico)"
-                inputContainerStyle={Styles.input}
-                labelStyle={{color: "green"}}
-                onChangeText={(txt) => this.ra = txt}
-                maxLength={15}
-                rightIcon={
-                    <Icon 
-                    name="questioncircleo"
-                    type="antdesign"
-                    color="green"/>
-                }
+                    label="RA (Registro Acadêmico)"
+                    inputContainerStyle={Styles.input}
+                    labelStyle={{color: "green"}}
+                    onChangeText={(txt) => this.ra = txt}
+                    maxLength={15}
+                    rightIcon={
+                        <Icon 
+                        name="questioncircleo"
+                        type="antdesign"
+                        color="green"/>
+                    }
                 />
 
                 <Input 
-                label="Data de Nascimento"
-                inputContainerStyle={Styles.input}
-                labelStyle={{color: "green"}}
-                onChangeText={(txt) => this.dtnasc = txt}
-                maxLength={10}
-                placeholder="Ex: 15/08/1998"
+                    label="Data de Nascimento"
+                    inputContainerStyle={Styles.input}
+                    labelStyle={{color: "green"}}
+                    onChangeText={(txt) => this.dtnasc = txt}
+                    maxLength={10}
+                    placeholder="Ex: 15/08/1998"
                 />
 
                 <Button 
-                title={"Próximo"}
-                name="arrowright"
-                type="antdesign"
-                onPress={() => this.checkEmpty()}
+                    title={"Próximo"}
+                    name="arrowright"
+                    type="antdesign"
+                    onPress={() => this.checkEmpty()}
                 />
 
             </View>

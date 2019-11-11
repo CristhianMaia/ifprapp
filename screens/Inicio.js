@@ -6,7 +6,7 @@ import Styles from "../components/Styles"
 import Button from "../components/Button"
 
 
-export default class extends React.Component{
+export default class Inicio extends React.Component{
     state = {
         overlay: false
     }
@@ -30,24 +30,25 @@ export default class extends React.Component{
             <View style={Styles.container}>
 
                 <Overlay
-                isVisible={this.state.overlay}
-                overlayStyle={Styles.overlay}
-                onBackdropPress={() => this.setState({overlay: false})}>
+                    isVisible={this.state.overlay}
+                    overlayStyle={Styles.overlay}
+                    onBackdropPress={() => this.setState({overlay: false})}
+                >
 
                     <Input 
-                    label="Digite seu email"
-                    inputContainerStyle={Styles.input}
-                    labelStyle={{color: "green"}}
-                    onChangeText={(txt) => this.email = txt}
-                    maxLength={30}
-                    placeholder="email@exemplo.com"
+                        label="Digite seu email"
+                        inputContainerStyle={Styles.input}
+                        labelStyle={{color: "green"}}
+                        onChangeText={(txt) => this.email = txt}
+                        maxLength={30}
+                        placeholder="email@exemplo.com"
                     />
 
                     <Button 
-                    title="Confirmar"
-                    onPress={() => this.checkEmail()}
-                    name="check"
-                    type="antdesign"
+                        title="Confirmar"
+                        onPress={() => this.checkEmail()}
+                        name="check"
+                        type="antdesign"
 
                     />
                 
@@ -56,24 +57,24 @@ export default class extends React.Component{
                 <View style={{paddingVertical: 50}} />
 
                 <Button 
-                title="Cadastro"
-                onPress={() => Actions.validacao()}
-                name="user"
-                type="antdesign"
+                    title="Cadastro"
+                    onPress={() => Actions.validacao()}
+                    name="user"
+                    type="antdesign"
                 />
 
                 <Button 
-                title="Esqueci a senha"
-                onPress={() => this.setState({overlay: true})}
-                name="lock"
-                type="antdesign"
+                    title="Esqueci a senha"
+                    onPress={() => this.setState({overlay: true})}
+                    name="lock"
+                    type="antdesign"
                 />
 
                 <Button 
-                title="Suporte"
-                onPress={() => Actions.suporte()}
-                name="tool"
-                type="antdesign"
+                    title="Suporte"
+                    onPress={() => Actions.suporte()}
+                    name="tool"
+                    type="antdesign"
                 />
 
             </View>
