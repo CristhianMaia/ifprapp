@@ -1,6 +1,7 @@
 import React from "react"
-import { View, Alert } from "react-native"
+import { View, Alert, Text } from "react-native"
 import { Input, Icon } from "react-native-elements"
+import { MaskService } from 'react-native-masked-text'
 import { Actions } from "react-native-router-flux"
 import Styles from "../components/Styles"
 import Button from "../components/Button"
@@ -9,7 +10,9 @@ import Button from "../components/Button"
 export default class Validacao extends React.Component{
     constructor(props){
         super(props)
-        state = {
+        this.state = {
+            cpf: "",
+            dtnasc: "",
             //Dados ficticios de como os dados chegarão na state após consulta ao banco via api
             responsaveis: [
                 {
@@ -34,13 +37,11 @@ export default class Validacao extends React.Component{
         }
     }
     resp = ""
-    cpf = ""
     ra = ""
-    dtnasc = ""
 
 
     checkEmpty = () => {
-        if (this.resp && this.cpf && this.ra && this.dtnasc){
+        if (this.resp && this.cpf && this.ra && this.state.dtnasc){
             Actions.cadastro()
         }
         else{
@@ -48,11 +49,17 @@ export default class Validacao extends React.Component{
         }
     }
 
+    handleDate = (value) => {
+        var dateF = MaskService.toMask('datetime', value, {
+            format: 'DD/MM/YYYY'
+        })
+        this.setState({data: dateF})
+    }
 
     render(){
         return(
             <View style={Styles.container}>
-
+                <Text>{this.state.data}</Text>
                 <Input 
                     label="Nome do Responsável"
                     inputContainerStyle={Styles.input}
@@ -67,7 +74,8 @@ export default class Validacao extends React.Component{
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
                     maxLength={11}
-                    onChangeText={(txt) => this.cpf = txt}
+                    onChangeText={(txt) => this.handleDate(txt)}
+                    value={this.state.data}
                     />
 
                 <Input 
@@ -90,7 +98,8 @@ export default class Validacao extends React.Component{
                     keyboardType="numeric"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
-                    onChangeText={(txt) => this.dtnasc = txt}
+                    onChangeText={(value) => this.handleDate(value)}
+                    value={this.state.data}
                     maxLength={10}
                     placeholder="Ex: 15/08/1998"
                 />
