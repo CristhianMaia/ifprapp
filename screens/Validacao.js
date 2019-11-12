@@ -16,6 +16,7 @@ export default class Validacao extends React.Component{
             cpf: "",
             ra: "",
             dtnasc: "",
+            cpfvalidate: false,
             //Dados ficticios de como os dados chegarão na state após consulta ao banco via api
             responsaveis: [
                 {
@@ -52,6 +53,8 @@ export default class Validacao extends React.Component{
         var cpf = MaskService.toMask('cpf', value, {})
         this.setState({cpf: cpf})
 
+        var validate = MaskService.isValid('cpf', cpf, {})
+        this.setState({cpfvalidate: validate})
     }
     //Marcara Campo Data de Nascimento
     handleDtnasc = (value) => {
@@ -71,6 +74,7 @@ export default class Validacao extends React.Component{
     }
 
     render(){
+        const cpfvalidate = this.state.cpfvalidate
         return(
             <View style={Styles.container}>
                 <Input 
@@ -90,6 +94,13 @@ export default class Validacao extends React.Component{
                     value={this.state.cpf}
                     maxLength={14}
                     placeholder="000.000.000-00"
+                    rightIcon={
+                        <Icon
+                            name={this.state.cpfvalidate ? "checkcircle" : "closecircleo"}
+                            type="antdesign"
+                            color={this.state.cpfvalidate? "green" : "red"}
+                        />
+                    }
                     />
 
                 <Input 
@@ -102,6 +113,7 @@ export default class Validacao extends React.Component{
                     rightIcon={
                         <Tooltip
                             isVisible={this.state.toolTipVisible}
+                            contentStyle={{height: "auto"}}
                             content={
                                 <Text>O RA (Numero de Matricula) pode ser encontrado no sistema academico 
                                     SIGAA (sigaa.ifpr.edu.br) ou na Secretária do seu campus.</Text>
