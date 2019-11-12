@@ -2,15 +2,15 @@ import RestClient from "react-native-rest-client"
 
 export default class Rest extends RestClient{
     constructor(){
-        super("localhost:3000")
+        super("http://172.16.101.25:3000")
     }
 
-    sendData = (nome, cpf, dtnasc, nomeResp) => {
-        return this.POST("/validaUsuario")
+    postData = (nome, cpf, dtnasc, nomeResp) => {
+        return this.POST("/validaUsuario", {nome, cpf, dtnasc, nomeResp})
     }
 
-    testeGet = async() => {
-        return this.GET("/url").then(resp => resp)
+    getData = async() => {
+        return this.GET("/url")
     }
 
 }
