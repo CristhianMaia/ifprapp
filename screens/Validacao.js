@@ -7,7 +7,32 @@ import Button from "../components/Button"
 
 
 export default class Validacao extends React.Component{
-
+    constructor(props){
+        super(props)
+        state = {
+            //Dados ficticios de como os dados chegarão na state após consulta ao banco via api
+            responsaveis: [
+                {
+                    "id": "1",
+                    "nome": "Fulano Responsavel 1"
+                },
+                {
+                    "id": "2",
+                    "nome": "Ciclano Responsavel 1"
+                }
+            ],
+            ra: [
+                {
+                    "id": "2019000112",
+                    "nome": "Cristhian da Silveira Maia"
+                },
+                {
+                    "id": "2019001919",
+                    "nome": "joao Gabriel"
+                }
+            ]
+        }
+    }
     resp = ""
     cpf = ""
     ra = ""
