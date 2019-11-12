@@ -16,7 +16,7 @@ export default Styles = StyleSheet.create({
     overlay: {
         alignItems: "center",
         justifyContent: "center",
-        height: res.height * 0.3,
+        height: "auto",
         elevation: 8
     },
     input: {

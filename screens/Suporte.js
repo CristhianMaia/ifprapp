@@ -27,6 +27,7 @@ export default class Suporte extends React.Component{
                     labelStyle={{color: "green"}}
                     maxLength={30}
                     onChangeText={(txt) => this.titulo = txt}
+                    placeholder="Digite o título do problema"
                 />
 
                 <Input 
