@@ -38,14 +38,16 @@ export default class Validacao extends React.Component{
 
                 <Input 
                     label="CPF"
+                    keyboardType="numeric"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
                     maxLength={11}
                     onChangeText={(txt) => this.cpf = txt}
-                />
+                    />
 
                 <Input 
                     label="RA (Registro Acadêmico)"
+                    keyboardType="numeric"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
                     onChangeText={(txt) => this.ra = txt}
@@ -60,6 +62,7 @@ export default class Validacao extends React.Component{
 
                 <Input 
                     label="Data de Nascimento"
+                    keyboardType="numeric"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
                     onChangeText={(txt) => this.dtnasc = txt}
