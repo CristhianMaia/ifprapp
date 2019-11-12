@@ -18,6 +18,7 @@
     "react-native-gesture-handler": "^1.5.0",
     "react-native-masked-text": "^1.13.0",
     "react-native-reanimated": "^1.4.0",
+    "react-native-rest-client": "^0.1.1",
     "react-native-router-flux": "^4.0.6",
     "react-native-screens": "^1.0.0-alpha.23",
     "react-native-vector-icons": "^6.6.0",

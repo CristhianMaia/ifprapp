@@ -2,11 +2,13 @@ import React from "react"
 import { View, Alert, Text} from "react-native"
 import { Input, Icon } from "react-native-elements"
 import { MaskService } from 'react-native-masked-text'
-import Tooltip from 'react-native-walkthrough-tooltip';
 import { Actions } from "react-native-router-flux"
+import Rest from "../components/Rest"
+import Tooltip from 'react-native-walkthrough-tooltip'
 import Styles from "../components/Styles"
 import Button from "../components/Button"
 
+const Api = new Rest()
 
 export default class Validacao extends React.Component{
     constructor(props){
@@ -43,9 +45,14 @@ export default class Validacao extends React.Component{
 
 
     submitForm = () => {
-        this.checkEmpty()
-        //Comparar dados 
-        //--------------
+        // this.checkEmpty()
+        
+        // Api.sendData("1", "2", "3", "4")
+        // .then(resposta => resposta)
+        // .catch(err => console.warn(err))
+
+        Api.testeGet().then(resp => console.warn(resp)).catch(err => console.warn(err))
+
     }
 
     //Mascara Campo CPF
