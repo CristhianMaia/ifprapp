@@ -41,7 +41,7 @@ export default class Validacao extends React.Component{
 
 
     checkEmpty = () => {
-        if (this.resp && this.cpf && this.ra && this.state.dtnasc){
+        if (this.resp && this.state.cpf && this.ra && this.state.dtnasc){
             Actions.cadastro()
         }
         else{
@@ -49,13 +49,19 @@ export default class Validacao extends React.Component{
         }
     }
 
-    handleDate = (value) => {
-        var dateF = MaskService.toMask('datetime', value, {
-            format: 'DD/MM/YYYY'
-        })
-        this.setState({data: dateF})
+    handleCpf = (value) => {
+        var cpf = MaskService.toMask('cpf', value, {})
+        this.setState({cpf: cpf})
+
     }
 
+    handleDate = (value) => {
+        var data = MaskService.toMask('datetime', value, {
+            format: 'DD/MM/YYYY'
+        })
+        this.setState({data: data})
+    }
+    
     render(){
         return(
             <View style={Styles.container}>
@@ -73,9 +79,10 @@ export default class Validacao extends React.Component{
                     keyboardType="numeric"
                     inputContainerStyle={Styles.input}
                     labelStyle={{color: "green"}}
-                    maxLength={11}
-                    onChangeText={(txt) => this.handleDate(txt)}
-                    value={this.state.data}
+                    onChangeText={(value) => this.handleCpf(value)}
+                    value={this.state.cpf}
+                    maxLength={14}
+                    placeholder="000.000.000-00"
                     />
 
                 <Input 
