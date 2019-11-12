@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Alert, Text, TouchableHighlight } from "react-native"
+import { View, Alert, Text} from "react-native"
 import { Input, Icon } from "react-native-elements"
 import { MaskService } from 'react-native-masked-text'
 import Tooltip from 'react-native-walkthrough-tooltip';
