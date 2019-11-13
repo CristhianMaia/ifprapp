@@ -46,9 +46,10 @@ export default class Inicio extends React.Component{
 
                     <Button 
                         title="Confirmar"
-                        onPress={() => this.checkEmail()}
                         name="check"
                         type="antdesign"
+                        style={Styles.botaowidth}
+                        onPress={() => this.checkEmail()}
 
                     />
                 
@@ -58,23 +59,26 @@ export default class Inicio extends React.Component{
 
                 <Button 
                     title="Cadastro"
-                    onPress={() => Actions.validacao()}
                     name="user"
                     type="antdesign"
-                />
+                    style={Styles.botao}
+                    onPress={() => Actions.validacao()}
+                    />
 
                 <Button 
                     title="Esqueci a senha"
-                    onPress={() => this.setState({overlay: true})}
                     name="lock"
                     type="antdesign"
+                    style={Styles.botao}
+                    onPress={() => this.setState({overlay: true})}
                 />
 
                 <Button 
                     title="Suporte"
-                    onPress={() => Actions.suporte()}
                     name="tool"
                     type="antdesign"
+                    style={Styles.botao}
+                    onPress={() => Actions.suporte()}
                 />
 
             </View>

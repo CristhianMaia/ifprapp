@@ -7,10 +7,10 @@ const Button = (props) => {
         <DefaultButton 
         title={props.title}
         type="outline"
-        titleStyle={{color: "green"}}
+        titleStyle={Styles.title}
         buttonStyle={{borderColor: "green"}}
         raised
-        containerStyle={Styles.botao}
+        containerStyle={props.style}
         onPress={() => setTimeout(props.onPress, 25)}
         icon={
             <Icon 

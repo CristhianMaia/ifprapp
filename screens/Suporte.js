@@ -45,6 +45,7 @@ export default class Suporte extends React.Component{
                     title={"Enviar"}
                     name={"send"}
                     type={"feather"}
+                    style={Styles.botao}
                     onPress={() => enviarTicket()}
                 />
 

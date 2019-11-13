@@ -211,6 +211,7 @@ export default class Validacao extends React.Component{
                     title={"Próximo"}
                     name="arrowright"
                     type="antdesign"
+                    style={Styles.botao}
                     onPress={() => this.submitForm()}
                 />
 

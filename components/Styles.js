@@ -8,6 +8,11 @@ export default Styles = StyleSheet.create({
         backgroundColor: "green",
         marginTop: res.height * 0.03
     },
+    botaowidth:{
+        width: "80%",
+        backgroundColor: "green",
+        marginTop: res.height * 0.03
+    },
     img: {
         width: "100%",
         height: res.height * 0.15,
@@ -21,11 +26,18 @@ export default Styles = StyleSheet.create({
     },
     input: {
         borderColor: 'green',
-        marginBottom: res.height *0.03
+        marginBottom: res.height *0.03,
+    },
+    title: {
+        color: "green", 
+        flex: 1,
+        marginRight: res.width * 0.11,
+        textAlign: 'center',
     },
     icon: {
         paddingRight: res.width * 0.05,
-        paddingTop: res.height *0.005
+        paddingTop: res.height *0.005,
+        width: res.width * 0.11
     },
     container: {
         flex: 1, 
