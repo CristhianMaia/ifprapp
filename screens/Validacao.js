@@ -18,7 +18,7 @@ export default class Validacao extends React.Component{
             cpf: "",
             ra: "",
             dtnasc: "",
-            cpfvalidate: false,
+            cpfvalidate: "",
             //Dados ficticios de como os dados chegarão na state após consulta ao banco via api
             // responsaveis: [
             //     {
@@ -95,19 +95,19 @@ export default class Validacao extends React.Component{
             return true
         }
         else{
-            Alert.alert("Erro", "Digite um CPF Válido.")
+            Alert.alert("Erro", "O CPF informado não é Válido.")
             return false
         }
     }
 
 
     checkDt = () => {
-        if (this.state.dtnasc.length < 10){
-            Alert.alert("Erro", "Digite sua data de nascimento completa.")
-            return false
+        if (!(this.state.dtnasc.length < 10)){
+            return true
         }
         else {
-            return true
+            Alert.alert("Erro", "A data de nascimento não está completa.\nFormato obrigatório para preenchimento: 01/01/1990")
+            return false
         }
     }
 
@@ -156,9 +156,9 @@ export default class Validacao extends React.Component{
                     placeholder="000.000.000-00"
                     rightIcon={
                         <Icon
-                            name={this.state.cpfvalidate ? "checkcircle" : "closecircleo"}
+                            name={ this.state.cpf!=="" ? (this.state.cpfvalidate ? "checkcircle" : "closecircleo") : null}
                             type="antdesign"
-                            color={this.state.cpfvalidate? "green" : "red"}
+                            color={ this.state.cpf!=="" ? (this.state.cpfvalidate? "green" : "red") : null}
                         />
                     }
                     />
