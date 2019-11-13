@@ -18,6 +18,7 @@ export default class Validacao extends React.Component{
             cpf: "",
             ra: "",
             dtnasc: "",
+
             cpfvalidate: "",
             //Dados ficticios de como os dados chegarão na state após consulta ao banco via api
             // responsaveis: [
@@ -70,7 +71,7 @@ export default class Validacao extends React.Component{
     }
 
 
-    //Marcara Campo Data de Nascimento
+    //Mascara Campo Data de Nascimento
     handleDtnasc = (value) => {
         var data = MaskService.toMask('datetime', value, {
             format: 'DD/MM/YYYY'
@@ -102,18 +103,42 @@ export default class Validacao extends React.Component{
 
 
     checkDt = () => {
+        var datasplit = this.state.dtnasc.split('/')
+        var dia = parseInt(datasplit[0])
+        var mes = parseInt(datasplit[1])
+        var ano = parseInt(datasplit[2])
+
         if (!(this.state.dtnasc.length < 10)){
-            return true
-        }
-        else {
-            Alert.alert("Erro", "A data de nascimento não está completa.\nFormato obrigatório para preenchimento: 01/01/1990")
+
+            if (ano >= 1900 && ano <= 2019){
+                
+                if(mes >= 1 && mes <= 12){
+
+                    if(dia >= 1 && dia <= 31){
+                        return true
+                    }else {
+                        Alert.alert("Erro", "O dia de nascimento está incorreto.")
+                        return false
+                    }
+
+                }else {
+                    Alert.alert("Erro", "O mês de nascimento está incorreto.")
+                    return false
+                }
+
+            }else {
+                Alert.alert("Erro", "O ano de nascimento deve ser após 1900.")
+                return false
+            }
+
+        }else {
+            Alert.alert("Erro", "A data de nascimento está incompleta.\nFormato obrigatório para preenchimento: dd/mm/aaaa (Ex: 01/01/1801).")
             return false
         }
     }
 
 
     render(){
-        const cpfvalidate = this.state.cpfvalidate
         return(
             <View style={Styles.container}>
                 
