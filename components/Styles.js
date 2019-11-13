@@ -35,6 +35,7 @@ export default Styles = StyleSheet.create({
         textAlign: 'center',
     },
     icon: {
+        marginRight: res.width *0.02,
         paddingRight: res.width * 0.05,
         paddingTop: res.height *0.005,
         width: res.width * 0.11
