@@ -93,7 +93,7 @@ Para obter informações sobre como entrar em contato com o Google, por favor vi
                                 title="Finalizar"
                                 name="check"
                                 type="antdesign"
-                                style={Styles.botao}
+                                style={Styles.botaowidth}
                                 onPress={() => this.cadastrar()}
                             />
                             
