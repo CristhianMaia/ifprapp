@@ -11,12 +11,15 @@ export default class App extends React.Component{
         return(
             <Router 
                 navigationBarTitleImage={require("./assets/logo.png")} 
-                navigationBarTitleImageStyle={{flex: 1, alignSelf: "center", resizeMode: "contain", width: "80%", height: "90%"}}
+                navigationBarTitleImageStyle={{ alignSelf: "center", resizeMode: "contain", width: "80%", height: "90%" }}
             >
                 <Stack key="root" >
-                    <Scene key="inicio" 
+                    <Scene 
+                        key="inicio" 
                         component={Inicio} 
                         initial 
+                        navigationBarTitleImage={require("./assets/logo.png")}
+                        navigationBarTitleImageStyle={{ flex:1, alignSelf: "center", resizeMode: "contain", width: "80%", height: "90%" }}
                     />
 
                     <Scene key="validacao" component={Validacao} />
