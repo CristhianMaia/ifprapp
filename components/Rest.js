@@ -5,8 +5,14 @@ export default class Rest extends RestClient{
         super("http://172.16.101.25:3000")
     }
 
-    postData = (nome, cpf, dtnasc, nomeResp) => {
+    postValidar = (nome, cpf, dtnasc, nomeResp) => {
         return this.POST("/validaUsuario", {nome, cpf, dtnasc, nomeResp})
+    }
+    postValidarEmail = (email) => {
+        return this.POST("/validaUsuario", {email})
+    }
+    postCadastro = (email, usuario, senha) => {
+        return this.POST("/validaUsuario", {email, usuario, senha})
     }
 
     getData = async() => {

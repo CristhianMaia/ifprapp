@@ -2,9 +2,11 @@ import React from "react"
 import { View, ToastAndroid, Alert, ScrollView, Text } from "react-native"
 import { Input, Overlay, CheckBox } from "react-native-elements"
 import { Actions } from "react-native-router-flux"
+import Rest from "../components/Rest"
 import Styles from "../components/Styles"
 import Button from "../components/Button"
 
+const Api = new Rest()
 
 export default class Cadastro extends React.Component{
 
@@ -21,8 +23,11 @@ export default class Cadastro extends React.Component{
     cadastrar = () => {
 
         if (this.state.check){
-            ToastAndroid.show("Cadastrado com sucesso", ToastAndroid.LONG)
-            Actions.popTo("inicio")
+            Api.postCadastro(this.email, this.user, this.senha).then(result => {
+                console.warn(result)
+                ToastAndroid.show("Cadastrado com sucesso", ToastAndroid.LONG)
+                Actions.popTo("inicio")
+            }).catch(err => Alert.alert("Erro", err.message))
         }
         else{
             Alert.alert("Erro", "Aceite os termos para realizar o cadastro.")

@@ -2,10 +2,12 @@ import React from "react"
 import { View, Alert, ActivityIndicator } from "react-native"
 import { Overlay, Input } from "react-native-elements"
 import { Actions } from "react-native-router-flux"
+import Rest from "../components/Rest"
 import RNSmtpMailer from "react-native-smtp-mailer"
 import Styles from "../components/Styles"
 import Button from "../components/Button"
 
+const Api = new Rest()
 
 export default class Inicio extends React.Component{
     state = {
@@ -24,37 +26,45 @@ export default class Inicio extends React.Component{
             Alert.alert("Erro", "Preencha todos os campos disponíveis.")
         }
         else{
-            RNSmtpMailer.sendMail({
-                mailhost: "smtp.gmail.com",
-                port: "465",
-                ssl: true, 
-                username: "ifprpvaiapp",
-                password: "gtasan123",
-                from: "ifprpvaiapp@gmail.com",
-                recipients: this.email,
-                subject: "Redefinição de senha acesso à internet IFPR",
-                htmlBody: "<p>Foi solicitado a redefinição da senha da conta deste email no App Internet IFPR. Clique neste link para redefinir sua senha.\nSe você não realizou esta ação, ignore este email.</p>",
-                attachmentPaths: [],
-                attachmentNames: [],
-                attachmentTypes: []
+            Api.postValidar(this.email).then(result => {
+                if (result){
 
-            }).then(result => {
-                this.setState({loading: false})
+                    RNSmtpMailer.sendMail({
+                        mailhost: "smtp.gmail.com",
+                        port: "465",
+                        ssl: true, 
+                        username: "ifprpvaiapp",
+                        password: "gtasan123",
+                        from: "ifprpvaiapp@gmail.com",
+                        recipients: this.email,
+                        subject: "Redefinição de senha acesso à internet IFPR",
+                        htmlBody: "<p>Foi solicitado a redefinição da senha da conta deste email no App Internet IFPR. Clique neste link para redefinir sua senha.\nSe você não realizou esta ação, ignore este email.</p>",
+                        attachmentPaths: [],
+                        attachmentNames: [],
+                        attachmentTypes: []
+        
+                    }).then(result => {
+                        this.setState({loading: false})
+        
+                        if (result.status != "SUCCESS"){
+                            Alert.alert("Erro", "Ocorreu um erro ao enviar o email de redefinição.")
+                        }
+                        else{
+                            this.setState({overlay: false})
+                            Alert.alert("Sucesso", "Um link de verificação foi enviado ao email "+this.email+".\nApós clicar no link realize o cadastro novamente pelo app.")
+                            this.email = ""
+                        }
+                        
+                    }).catch(err => {
+                        this.setState({loading: false})
+                        console.warn(err)
+                        Alert.alert("Erro", "O email digitado é inálido.")
+                    })
+                }
+                })
+            }
 
-                if (result.status != "SUCCESS"){
-                    Alert.alert("Erro", "Ocorreu um erro ao enviar o email de redefinição.")
-                }
-                else{
-                    this.setState({overlay: false})
-                    Alert.alert("Sucesso", "Um link de verificação foi enviado ao email "+this.email+".\nApós clicar no link realize o cadastro novamente pelo app.")
-                }
-                
-            }).catch(err => {
-                this.setState({loading: false})
-                console.warn(err)
-                Alert.alert("Erro", "O email digitado é inálido.")
-            })
-        }
+            
     }
 
 
@@ -74,7 +84,10 @@ export default class Inicio extends React.Component{
                 <Overlay
                     isVisible={this.state.overlay}
                     overlayStyle={Styles.overlay}
-                    onBackdropPress={() => this.setState({overlay: false})}
+                    onBackdropPress={() => {
+                        this.setState({overlay: false})
+                        this.email = ""
+                    }}
                 >
 
                     <Input 

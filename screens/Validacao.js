@@ -47,13 +47,13 @@ export default class Validacao extends React.Component{
 
     submitForm = () => {
         if (this.checkEmpty()){
-            if (true){
-                if (this.checkDt()){
-                    Api.postData(this.state.ra, this.state.cpf, this.state.dtnasc, this.state.resp)
+            if (this.checkDt()){
+                if (this.checkCpf()){
+                    Api.postValidar(this.state.ra, this.state.cpf, this.state.dtnasc, this.state.resp)
                     .then(resp => {
                         console.warn(resp)
                         Actions.cadastro()
-                    }).catch(err => console.warn(err))
+                    }).catch(err => Alert.alert("Erro", err.message))
 
                 }
 
